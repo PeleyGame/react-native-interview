@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native/React/Views/RCTModalHostView.m b/node_modules/react-native/React/Views/RCTModalHostView.m
+index dfde4ae..b4d5abd 100644
+--- a/node_modules/react-native/React/Views/RCTModalHostView.m
++++ b/node_modules/react-native/React/Views/RCTModalHostView.m
+@@ -168,7 +168,7 @@ - (void)setVisible:(BOOL)visible
+
+ - (void)ensurePresentedOnlyIfNeeded
+ {
+-  BOOL shouldBePresented = !_isPresented && _visible && self.window;
++  BOOL shouldBePresented = !_isPresented && _visible && self.window && !_modalViewController.view.window;
+   if (shouldBePresented) {
+     RCTAssert(self.reactViewController, @"Can't present modal view controller without a presenting view controller");
+
