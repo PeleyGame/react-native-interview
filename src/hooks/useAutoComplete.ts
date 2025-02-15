@@ -4,6 +4,7 @@ import type {
   AutoCompleteOption,
   useAutocompleteProps,
 } from '../types/autocomplete';
+import { useAutoCompleteContext } from '../context/AutoCompleteContext';
 
 const useAutoComplete = ({
   options,
@@ -13,9 +14,7 @@ const useAutoComplete = ({
   const inputRef = useRef<TextInput>(null);
   const [searchQuery, setSearchQuery] = useState(defaultValue?.label || '');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<AutoCompleteOption | null>(
-    defaultValue || null,
-  );
+  const {selectedValue, setSelectedValue} = useAutoCompleteContext();
 
   // Memoize filtered options
   const filteredOptions = useMemo(() => {
