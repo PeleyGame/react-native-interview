@@ -31,6 +31,9 @@ const useAutoComplete = ({
     setSearchQuery(value.label);
     setSelectedValue(value);
     setIsDropdownOpen(false);
+    if (onSelect) {
+      onSelect(selectedValue);
+    }
   };
 
   const handleSearch = useCallback(
@@ -49,14 +52,6 @@ const useAutoComplete = ({
     inputRef.current?.blur();
     setIsDropdownOpen(false);
   }, []);
-
-  useEffect(() => {
-    if (selectedValue !== null || selectedValue !== defaultValue) {
-      if (onSelect) {
-        onSelect(selectedValue);
-      }
-    }
-  }, [selectedValue, onSelect, defaultValue]);
 
   return {
     inputRef,
