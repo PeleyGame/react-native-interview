@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
+import {HomeScreen} from './screens';
 
 const App: React.FC = () => {
   React.useEffect(() => {
@@ -9,7 +10,7 @@ const App: React.FC = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Hello World!</Text>
+      <HomeScreen />
     </View>
   );
 };
@@ -17,8 +18,6 @@ const App: React.FC = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
