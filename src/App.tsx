@@ -1,5 +1,7 @@
+import RootStack from '@navigation/RootNavigator';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 
 const App: React.FC = () => {
@@ -8,9 +10,9 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <View style={styles.root}>
-      <Text>Hello World!</Text>
-    </View>
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
   );
 };
 
