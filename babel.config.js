@@ -6,6 +6,14 @@ module.exports = {
       require.resolve('babel-plugin-module-resolver'),
       {
         root: ['./src'],
+        alias: {
+          '@screens': './src/screens',
+          '@hooks': './src/hooks',
+          '@components': './src/components',
+          '@navigation': './src/navigation',
+          '@types': './src/types',
+          '@utils': './src/utils',
+        },
         extensions: [
           '.ios.ts',
           '.ios.tsx',
@@ -17,5 +25,6 @@ module.exports = {
         ],
       },
     ],
+    'react-native-reanimated/plugin',
   ],
 };
