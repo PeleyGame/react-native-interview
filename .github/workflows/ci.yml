@@ -1,0 +1,26 @@
+name: Ci
+on:
+  push:
+    branches: ['**']
+
+concurrency:
+  group: ${{ github.workflow }} @ ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Lint files
+        run: yarn lint
+
+      - name: Typecheck files
+        run: yarn typecheck
