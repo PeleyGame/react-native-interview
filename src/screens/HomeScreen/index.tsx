@@ -1,10 +1,14 @@
+import SingleSelectInput from '@components/SingleSelectInput';
 import React from 'react';
 import {Text, View} from 'react-native';
 
+import {styles} from './styles';
+
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Single select</Text>
+      <SingleSelectInput />
     </View>
   );
 };
