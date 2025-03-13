@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
+import Test from './view/pages/Test';
 
 const App: React.FC = () => {
   React.useEffect(() => {
@@ -9,7 +10,7 @@ const App: React.FC = () => {
 
   return (
     <View style={styles.root}>
-      <Text>Hello World!</Text>
+      <Test />
     </View>
   );
 };

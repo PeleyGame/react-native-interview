@@ -6,6 +6,13 @@ module.exports = {
       require.resolve('babel-plugin-module-resolver'),
       {
         root: ['./src'],
+        alias: {
+          assets: './src/assets',
+          helpers: './src/helpers',
+          locales: './src/locales',
+          view: './src/view',
+          pages: './src/view/pages',
+        },
         extensions: [
           '.ios.ts',
           '.ios.tsx',
@@ -19,3 +26,4 @@ module.exports = {
     ],
   ],
 };
+// npm start -- --reset-cache
