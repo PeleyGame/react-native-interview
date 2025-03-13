@@ -14,6 +14,7 @@ module.exports = {
           '@types': './src/types',
           '@utils': './src/utils',
           '@store': './src/store',
+          '@assets': './assets',
         },
         extensions: [
           '.ios.ts',
