@@ -13,6 +13,7 @@ module.exports = {
           '@navigation': './src/navigation',
           '@types': './src/types',
           '@utils': './src/utils',
+          '@store': './src/store',
         },
         extensions: [
           '.ios.ts',
