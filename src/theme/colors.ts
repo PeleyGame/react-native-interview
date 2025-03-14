@@ -7,7 +7,9 @@ const colors = {
     textInputContainerBorder: colorPalettes.lavender,
     textInputInactiveBorder: colorPalettes.transparent,
     textInputText: colorPalettes.slate,
+    textInputPlaceholder: colorPalettes.mediumGray,
     textInputCursor: colorPalettes.slate,
+    categoryBackground: colorPalettes.white,
   },
   common: {
     background: colorPalettes.lightGray,

@@ -16,4 +16,7 @@ export const styles = StyleSheet.create({
     color: colors.common.primaryText,
     marginBottom: mvp(8),
   },
+  containerSelect: {
+    position: 'relative',
+  },
 });

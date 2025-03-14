@@ -1,4 +1,8 @@
-import {useCallback} from 'react';
+import {
+  selectCategories,
+  selectCategory,
+} from '@store/slices/categorySelectors';
+import {useCallback, useMemo} from 'react';
 
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {setInputValue, setIsFocused} from '../store/slices/categorySlice';
@@ -11,12 +15,23 @@ interface UseSelectReturn {
   handleInputChange: (value: string) => void;
   handleFocus: () => void;
   handleBlur: () => void;
+  inputHasValue: boolean;
+  showChip: boolean;
+  isInputValueInCategories: boolean;
 }
 
 export const useSingleSelect = (): UseSelectReturn => {
   const dispatch = useAppDispatch();
-  const {inputValue, isFocused, selectedCategory} = useAppSelector(
-    (state) => state.category,
+
+  const {inputValue, isFocused, selectedCategory} =
+    useAppSelector(selectCategory);
+  const categories = useAppSelector(selectCategories);
+
+  const inputHasValue = !!inputValue?.length;
+  const showChip = !isFocused && !!selectedCategory;
+  const isInputValueInCategories = useMemo(
+    () => categories.some((category) => category.label === inputValue),
+    [categories, inputValue],
   );
 
   const handleInputChange = useCallback(
@@ -41,5 +56,8 @@ export const useSingleSelect = (): UseSelectReturn => {
     handleInputChange,
     handleFocus,
     handleBlur,
+    inputHasValue,
+    showChip,
+    isInputValueInCategories,
   };
 };
