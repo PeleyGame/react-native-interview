@@ -4,6 +4,10 @@ const metrics = {
   paddings: {
     screenHrPadding: mvp(16),
     standard: mvp(16),
+    small: mvp(8),
+  },
+  spacings: {
+    icons: mvp(8),
   },
   radius: {
     standard: mvp(8),
@@ -11,6 +15,7 @@ const metrics = {
   },
   borders: {
     standard: mvp(2),
+    small: mvp(1),
   },
 };
 

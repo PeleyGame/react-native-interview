@@ -24,34 +24,7 @@ export default StyleSheet.create({
   h4Regular: {
     fontSize: size.h4,
   },
-  // h5: mvp(20),
-  h5Bold: {
-    fontSize: size.h5,
-    fontFamily: fontNames.boldFont,
-    lineHeight: mvp(25),
-  },
-  h5Regular: {
-    fontSize: size.h5,
-    fontFamily: fontNames.regularFont,
-    lineHeight: mvp(25),
-  },
-  // h6: mvp(18),
-  h6Regular: {
-    fontSize: size.h6,
-    fontFamily: fontNames.regularFont,
-  },
-  h6Bold: {
-    fontSize: size.h6,
-    fontFamily: fontNames.boldFont,
-    lineHeight: mvp(24),
-  },
   // mvp(16),
-  extraBold: {
-    fontSize: size.extra,
-    lineHeight: mvp(16),
-    fontFamily: fontNames.boldFont,
-    fontWeight: '700',
-  },
   extraRegular: {
     fontSize: size.extra,
     lineHeight: mvp(18),

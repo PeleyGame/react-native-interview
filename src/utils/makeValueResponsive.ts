@@ -6,7 +6,6 @@ interface ScreenDimensions {
 }
 
 const DESIGN_WIDTH = 360; // Standard design width for scaling
-const DESIGN_HEIGHT = 640; // Standard design height for reference
 
 /**
  * Responsive value calculator based on screen width
