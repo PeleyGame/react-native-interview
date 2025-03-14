@@ -4,4 +4,5 @@ export interface CategoryState {
   selectedCategory: TCategory | null;
   inputValue: string;
   isFocused: boolean;
+  categories: TCategory[];
 }
