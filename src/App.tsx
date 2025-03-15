@@ -1,25 +1,13 @@
+import RootStack from '@navigation/RootNavigator';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import BootSplash from 'react-native-bootsplash';
+import {MainWrapper} from 'wrappers/MainWrapper';
 
-const App: React.FC = () => {
-  React.useEffect(() => {
-    BootSplash.hide({fade: true});
-  }, []);
-
+const App = () => {
   return (
-    <View style={styles.root}>
-      <Text>Hello World!</Text>
-    </View>
+    <MainWrapper>
+      <RootStack />
+    </MainWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
