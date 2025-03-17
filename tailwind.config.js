@@ -19,7 +19,6 @@ module.exports = {
         '14px',
         {
           lineHeight: '16px',
-          letterSpacing: '0%',
           verticalAlign: 'middle',
         },
       ],
@@ -27,7 +26,6 @@ module.exports = {
         '14px',
         {
           lineHeight: '20px',
-          letterSpacing: '0%',
           verticalAlign: 'middle',
         },
       ],
