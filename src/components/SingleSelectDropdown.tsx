@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {View, FlatList, TouchableOpacity, Text} from 'react-native';
-import {useDropdownStore} from '../store/useDropdownStore';
+import {useDropdownStore} from '../store/useOptionsStore';
 import EducationIcon from '../assets/svgs/Education.svg';
 import ScienceIcon from '../assets/svgs/Science.svg';
 import ArtIcon from '../assets/svgs/Art.svg';
 import SportIcon from '../assets/svgs/Sport.svg';
 import GamesIcon from '../assets/svgs/Games.svg';
 import type {SvgProps} from 'react-native-svg';
-import SearchInput from '././SearchInput';
+import SearchInput from './DropdownSearchInput';
 
 const iconComponents: {[key: string]: React.FC<SvgProps>} = {
   education: EducationIcon,
@@ -17,31 +17,49 @@ const iconComponents: {[key: string]: React.FC<SvgProps>} = {
   games: GamesIcon,
 };
 
+const DEFAULT_ICON = 'art';
+
 const Dropdown = () => {
-  const {options} = useDropdownStore();
+  const {options, addOption} = useDropdownStore();
   const [input, setInput] = useState('');
   const [showList, setShowList] = useState(true);
 
-  const filteredOptions = input.trim()
-    ? options.filter((opt) =>
-        opt.label.toLowerCase().includes(input.toLowerCase()),
-      )
-    : options;
+  const filteredOptions = useMemo(
+    () =>
+      options.filter((opt) =>
+        opt.label.toLowerCase().includes(input.trim().toLowerCase()),
+      ),
+    [input, options],
+  );
 
   const IconComponent =
     filteredOptions.length === 1
       ? iconComponents[filteredOptions[0].icon]
       : undefined;
 
+  const handleAddOption = () => {
+    const newLabel = input.trim();
+    if (!newLabel || options.some((opt) => opt.label === newLabel)) return;
+
+    addOption({label: newLabel, icon: DEFAULT_ICON});
+    setInput('');
+    setShowList(true);
+  };
+
   return (
     <View className="w-full">
-      <Text className="font-medium py-3 text-base text-neutral_10 ">
+      <Text className="font-medium py-3 text-base text-neutral_10">
         Single select
       </Text>
       <SearchInput
         value={input}
-        onChangeText={setInput}
+        onChangeText={(text) => {
+          setInput(text);
+          setShowList(true);
+        }}
         IconComponent={IconComponent}
+        notFound={filteredOptions.length === 0}
+        onAddPress={handleAddOption}
       />
 
       {showList && (
@@ -56,7 +74,7 @@ const Dropdown = () => {
           renderItem={({item}) => {
             if (item.icon === 'error') {
               return (
-                <View className="py-4 px-2 flex items-center">
+                <View className="py-3 px-2 flex items-center">
                   <Text className="text-red-500 font-bold">{item.label}</Text>
                 </View>
               );
@@ -65,13 +83,13 @@ const Dropdown = () => {
             const ItemIcon = iconComponents[item.icon] || ArtIcon;
             return (
               <TouchableOpacity
-                className="flex-row items-center py-4 px-2"
+                className="flex-row items-center py-3 px-2"
                 onPress={() => {
                   setInput(item.label);
                   setShowList(false);
                 }}
               >
-                <ItemIcon width={24} height={24} />
+                <ItemIcon width={16} height={16} />
                 <Text className="font-medium text-neutral_17 px-3">
                   {item.label}
                 </Text>
